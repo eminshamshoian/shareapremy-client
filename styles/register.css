@@ -1,0 +1,11 @@
+.form-register {
+  box-shadow: 1px 1px 10px;
+  padding: 3rem;
+  border-radius: 0.5rem;
+  margin-top: 4rem;
+  color: #ececec;
+}
+
+.form-register-input {
+  border: #1d0053 0.1rem solid;
+}

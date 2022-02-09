@@ -15,6 +15,49 @@ a {
   box-sizing: border-box;
 }
 
+.main-btn {
+  background-color: #1d0053;
+  border-radius: 0.2rem;
+  padding: 10px 15px 10px !important;
+  color: #fff;
+}
+
+.light-btn {
+  background-color: #ff2d2d;
+  color: #fff;
+  border-radius: 0.2rem;
+  padding: 10px 15px 10px !important;
+}
+
+.main-btn:hover {
+  color: #ececec;
+}
+
+.top-nav {
+  padding: 0.5rem;
+}
+
+.ant-menu-item {
+  font-size: 15px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.menu-a-tag {
+  color: #1d0053 !important;
+}
+
+.ant-menu-horizontal > .ant-menu-item::after,
+.ant-menu-horizontal > .ant-menu-submenu::after {
+  border-bottom: none !important;
+  transition: none !important;
+}
+
+.ant-menu-item-selected {
+  background-color: #ececec !important;
+  border-radius: 0.5rem;
+}
+
 .rounded-jumbo {
   background-color: #1d0053;
   color: #fff;
