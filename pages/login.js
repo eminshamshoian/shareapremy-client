@@ -1,14 +1,22 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { SyncOutlined } from "@ant-design/icons";
 import Link from "next/link";
+import { Context } from "../context";
+import { useRouter } from "next/router";
 
 const Login = () => {
   // Create states
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+
+  // Global state
+  const { state, dispatch } = useContext(Context);
+
+  // Router
+  const router = useRouter();
 
   // Function to handle the submitting of data
   const handleSubmit = async (e) => {
@@ -19,8 +27,18 @@ const Login = () => {
         email,
         password,
       });
-      console.log("LOGIN RESPONSE", data);
-      //setLoading(false);
+
+      // Dispatch the user login
+      dispatch({
+        type: "LOGIN",
+        payload: data,
+      });
+
+      // Save in localstorage
+      window.localStorage.setItem("user", JSON.stringify(data));
+
+      // Redirect
+      router.push("/");
     } catch (err) {
       toast.error(err.response.data);
       setLoading(false);
