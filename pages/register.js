@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { SyncOutlined } from "@ant-design/icons";
+import Link from "next/link";
 
 const Register = () => {
   // Create states
@@ -65,6 +66,12 @@ const Register = () => {
             {loading ? <SyncOutlined spin /> : "Submit"}
           </button>
         </form>
+        <p className='text-center p-3 text-dark'>
+          Already registered?{" "}
+          <Link href='/login'>
+            <a>Login</a>
+          </Link>
+        </p>
       </div>
     </>
   );
