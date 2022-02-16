@@ -2,7 +2,7 @@
   "name": "sap-client",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node server.js",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -12,6 +12,8 @@
     "antd": "^4.17.2",
     "axios": "^0.24.0",
     "bootstrap": "^5.1.3",
+    "express": "^4.17.2",
+    "http-proxy-middleware": "^2.0.3",
     "next": "12.0.7",
     "react": "17.0.2",
     "react-dom": "17.0.2",
