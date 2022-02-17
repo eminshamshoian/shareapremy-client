@@ -1,15 +1,29 @@
-import { useState } from "react";
-import axios from "axios";
-import { toast } from "react-toastify";
-import { SyncOutlined } from "@ant-design/icons";
-import Link from "next/link";
+import { useEffect, useState, useContext } from 'react';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { SyncOutlined } from '@ant-design/icons';
+import { Context } from '../context';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const Register = () => {
   // Create states
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+
+  // Global state
+  const {
+    state: { user },
+  } = useContext(Context);
+
+  // Create router
+  const router = useRouter();
+
+  useEffect(() => {
+    if (user !== null) router.push('/');
+  }, [user]);
 
   // Function to handle the submitting of data
   const handleSubmit = async (e) => {
@@ -21,7 +35,7 @@ const Register = () => {
         email,
         password,
       });
-      toast.success("Registeration Completed! Please Login");
+      toast.success('Registeration Completed! Please Login');
       setLoading(false);
     } catch (err) {
       toast.error(err.response.data);
@@ -63,11 +77,11 @@ const Register = () => {
             className='btn main-btn p-2'
             disabled={!name || !email || !password || loading}
           >
-            {loading ? <SyncOutlined spin /> : "Submit"}
+            {loading ? <SyncOutlined spin /> : 'Submit'}
           </button>
         </form>
         <p className='text-center p-3 text-dark'>
-          Already registered?{" "}
+          Already registered?{' '}
           <Link href='/login'>
             <a>Login</a>
           </Link>

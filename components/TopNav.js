@@ -12,7 +12,7 @@ import { CoffeeOutlined } from '@ant-design/icons';
 import { Context } from '../context';
 
 // Menu Items
-const { Item, SubMenu } = Menu;
+const { Item, SubMenu, ItemGroup } = Menu;
 
 const TopNav = () => {
   // Current state of the selected navitem
@@ -77,9 +77,14 @@ const TopNav = () => {
           title={user && user.name}
           className='float-right'
         >
-          <Item onClick={logout} className='nav-item'>
-            <a className='typewriter menu-a-tag'>Logout</a>
-          </Item>
+          <ItemGroup>
+            <Item key='/user' className='nav-item'>
+              <a className='typewriter menu-a-tag'>Dashboard</a>
+            </Item>
+            <Item onClick={logout} className='nav-item'>
+              <a className='typewriter menu-a-tag'>Logout</a>
+            </Item>
+          </ItemGroup>
         </SubMenu>
       )}
     </Menu>

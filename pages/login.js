@@ -1,22 +1,27 @@
-import { useState, useContext } from "react";
-import axios from "axios";
-import { toast } from "react-toastify";
-import { SyncOutlined } from "@ant-design/icons";
-import Link from "next/link";
-import { Context } from "../context";
-import { useRouter } from "next/router";
+import { useState, useContext, useEffect } from 'react';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { SyncOutlined } from '@ant-design/icons';
+import Link from 'next/link';
+import { Context } from '../context';
+import { useRouter } from 'next/router';
 
 const Login = () => {
   // Create states
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
   // Global state
   const { state, dispatch } = useContext(Context);
+  const { user } = state;
 
   // Router
   const router = useRouter();
+
+  useEffect(() => {
+    if (user !== null) router.push('/');
+  }, [user]);
 
   // Function to handle the submitting of data
   const handleSubmit = async (e) => {
@@ -30,15 +35,15 @@ const Login = () => {
 
       // Dispatch the user login
       dispatch({
-        type: "LOGIN",
+        type: 'LOGIN',
         payload: data,
       });
 
       // Save in localstorage
-      window.localStorage.setItem("user", JSON.stringify(data));
+      window.localStorage.setItem('user', JSON.stringify(data));
 
       // Redirect
-      router.push("/");
+      router.push('/');
     } catch (err) {
       toast.error(err.response.data);
       setLoading(false);
@@ -71,11 +76,11 @@ const Login = () => {
             className='btn main-btn p-2'
             disabled={!email || !password || loading}
           >
-            {loading ? <SyncOutlined spin /> : "Submit"}
+            {loading ? <SyncOutlined spin /> : 'Submit'}
           </button>
         </form>
         <p className='text-center p-3 text-dark'>
-          Haven't Registered Yet?{" "}
+          Haven't Registered Yet?{' '}
           <Link href='/register'>
             <a>Register</a>
           </Link>
