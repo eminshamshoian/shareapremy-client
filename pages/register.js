@@ -46,7 +46,10 @@ const Register = () => {
   return (
     <>
       <h1 className='text-center p-5 mb-4 rounded-jumbo'>Register</h1>
-      <div className='container col-md-4 offset-md-4 pb-5 form-register'>
+      <div
+        className='container col-md-4 offset-md-4 pb-5 form-register'
+        style={{ height: '25rem' }}
+      >
         <form onSubmit={handleSubmit}>
           <input
             type='text'

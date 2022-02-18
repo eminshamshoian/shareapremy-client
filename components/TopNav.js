@@ -4,9 +4,10 @@ import Link from 'next/link';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
+import { Row, Col, Icon } from 'antd';
 
 // Import icons
-import { CoffeeOutlined } from '@ant-design/icons';
+import { HomeFilled } from '@ant-design/icons';
 
 // Import context
 import { Context } from '../context';
@@ -54,6 +55,7 @@ const TopNav = () => {
             key='/login'
             onClick={(e) => setCurrent(e.key)}
             className='nav-item'
+            style={{ marginLeft: 'auto' }}
           >
             <Link href='/login'>
               <a className='typewriter menu-a-tag'>Login</a>
@@ -73,9 +75,10 @@ const TopNav = () => {
 
       {user !== null && (
         <SubMenu
-          icon={<CoffeeOutlined />}
+          icon={<HomeFilled style={{ fontSize: '20px' }} />}
           title={user && user.name}
-          className='float-right'
+          style={{ marginLeft: 'auto' }}
+          className='subclass'
         >
           <ItemGroup>
             <Item key='/user' className='nav-item'>
