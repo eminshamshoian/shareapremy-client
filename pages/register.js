@@ -1,16 +1,16 @@
-import { useEffect, useState, useContext } from 'react';
-import axios from 'axios';
-import { toast } from 'react-toastify';
-import { SyncOutlined } from '@ant-design/icons';
-import { Context } from '../context';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useEffect, useState, useContext } from "react";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { SyncOutlined } from "@ant-design/icons";
+import { Context } from "../context";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Register = () => {
   // Create states
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
   // Global state
@@ -22,7 +22,7 @@ const Register = () => {
   const router = useRouter();
 
   useEffect(() => {
-    if (user !== null) router.push('/');
+    if (user !== null) router.push("/");
   }, [user]);
 
   // Function to handle the submitting of data
@@ -35,7 +35,10 @@ const Register = () => {
         email,
         password,
       });
-      toast.success('Registeration Completed! Please Login');
+      toast.success("Registeration Completed! Please Login");
+      setName("");
+      setEmail("");
+      setPassword("");
       setLoading(false);
     } catch (err) {
       toast.error(err.response.data);
@@ -48,7 +51,7 @@ const Register = () => {
       <h1 className='text-center p-5 mb-4 rounded-jumbo'>Register</h1>
       <div
         className='container col-md-4 offset-md-4 pb-5 form-register'
-        style={{ height: '25rem' }}
+        style={{ height: "25rem" }}
       >
         <form onSubmit={handleSubmit}>
           <input
@@ -80,13 +83,13 @@ const Register = () => {
             className='btn main-btn p-2'
             disabled={!name || !email || !password || loading}
           >
-            {loading ? <SyncOutlined spin /> : 'Submit'}
+            {loading ? <SyncOutlined spin /> : "Submit"}
           </button>
         </form>
         <p className='text-center p-3 text-dark'>
-          Already registered?{' '}
+          Already registered?{" "}
           <Link href='/login'>
-            <a>Login</a>
+            <a className='a-link'>Login</a>
           </Link>
         </p>
       </div>

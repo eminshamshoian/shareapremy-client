@@ -37,6 +37,11 @@ svg {
   color: #ececec;
 }
 
+.a-link {
+  color: #1d0053;
+  font-weight: bold;
+}
+
 .top-nav {
   padding: 0.5rem;
 }
