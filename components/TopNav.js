@@ -1,23 +1,22 @@
-import { useState, useEffect, useContext } from 'react';
-import { Menu } from 'antd';
-import Link from 'next/link';
-import axios from 'axios';
-import { toast } from 'react-toastify';
-import { useRouter } from 'next/router';
-import { Row, Col, Icon } from 'antd';
+import { useState, useEffect, useContext } from "react";
+import { Menu } from "antd";
+import Link from "next/link";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { useRouter } from "next/router";
 
 // Import icons
-import { HomeFilled } from '@ant-design/icons';
+import { HomeFilled } from "@ant-design/icons";
 
 // Import context
-import { Context } from '../context';
+import { Context } from "../context";
 
 // Menu Items
 const { Item, SubMenu, ItemGroup } = Menu;
 
 const TopNav = () => {
   // Current state of the selected navitem
-  const [current, setCurrent] = useState('');
+  const [current, setCurrent] = useState("");
 
   // Global state
   const { state, dispatch } = useContext(Context);
@@ -33,29 +32,46 @@ const TopNav = () => {
 
   // Logout
   const logout = async () => {
-    dispatch({ type: 'LOGOUT' });
-    window.localStorage.removeItem('user');
-    const { data } = await axios.get('/api/logout');
+    dispatch({ type: "LOGOUT" });
+    window.localStorage.removeItem("user");
+    const { data } = await axios.get("/api/logout");
     toast.success(data.message);
-    router.push('/login');
+    router.push("/login");
   };
 
   return (
     // Give each menu item a key and set current state to that navitem and selectedKeys to the current key array
     <Menu className='top-nav' mode='horizontal' selectedKeys={[current]}>
       <Item key='/' onClick={(e) => setCurrent(e.key)} className='nav-item'>
-        <Link href='/'>
-          <a className='typewriter menu-a-tag'>Home</a>
+        <Link href='/#home'>
+          <a className='typewriter menu-a-tag'>Home.</a>
         </Link>
       </Item>
-
+      <Item
+        key='/#about'
+        onClick={(e) => setCurrent(e.key)}
+        className='nav-item'
+      >
+        <Link href='/#about'>
+          <a className='typewriter menu-a-tag'>exmplain it to me.</a>
+        </Link>
+      </Item>
+      <Item
+        key='/#pricing'
+        onClick={(e) => setCurrent(e.key)}
+        className='nav-item'
+      >
+        <Link href='/#pricing'>
+          <a className='typewriter menu-a-tag'>pricing.</a>
+        </Link>
+      </Item>
       {user === null && (
         <>
           <Item
             key='/login'
             onClick={(e) => setCurrent(e.key)}
             className='nav-item'
-            style={{ marginLeft: 'auto' }}
+            style={{ marginLeft: "auto" }}
           >
             <Link href='/login'>
               <a className='typewriter menu-a-tag'>Login</a>
@@ -75,9 +91,9 @@ const TopNav = () => {
 
       {user !== null && (
         <SubMenu
-          icon={<HomeFilled style={{ fontSize: '20px' }} />}
+          icon={<HomeFilled style={{ fontSize: "20px" }} />}
           title={user && user.name}
-          style={{ marginLeft: 'auto' }}
+          style={{ marginLeft: "auto" }}
           className='subclass'
         >
           <ItemGroup>
