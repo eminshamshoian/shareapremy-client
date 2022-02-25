@@ -125,3 +125,12 @@ svg {
   border-radius: 0.75rem;
   box-shadow: 7px 7px #1d0053;
 }
+
+/* Sidebar */
+.nav-link {
+  background-color: #1d0053 !important;
+  color: #ffffff !important;
+  font-weight: 800;
+  border: 1px solid #fff !important;
+  border-radius: 0 !important;
+}

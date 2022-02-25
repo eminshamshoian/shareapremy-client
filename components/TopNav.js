@@ -98,7 +98,9 @@ const TopNav = () => {
         >
           <ItemGroup>
             <Item key='/user' className='nav-item'>
-              <a className='typewriter menu-a-tag'>Dashboard</a>
+              <Link href='/user'>
+                <a className='typewriter menu-a-tag'>Dashboard</a>
+              </Link>
             </Item>
             <Item onClick={logout} className='nav-item'>
               <a className='typewriter menu-a-tag'>Logout</a>

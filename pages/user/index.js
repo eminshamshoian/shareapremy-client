@@ -1,6 +1,6 @@
-import { useContext } from 'react';
-import { Context } from '../../context';
-import UserRoute from '../../components/routes/UserRoute';
+import { useContext } from "react";
+import { Context } from "../../context";
+import UserRoute from "../../components/Routes/UserRoute";
 
 const UserIndex = () => {
   const {
@@ -9,9 +9,7 @@ const UserIndex = () => {
 
   return (
     <UserRoute>
-      <h1 className='jumbotron text-center square'>
-        <pre>{JSON.stringify(user, null, 4)}</pre>
-      </h1>
+      <h1 className='text-center p-5 mb-4 '>User dashboard</h1>
     </UserRoute>
   );
 };
