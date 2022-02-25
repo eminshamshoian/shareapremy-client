@@ -27,6 +27,10 @@ svg {
   vertical-align: baseline;
 }
 
+.main-color {
+  color: #1d0053;
+}
+
 .main-bg {
   background-color: #1d0053;
 }
@@ -60,8 +64,15 @@ svg {
   color: #ffff;
 }
 
-.main-btn:hover {
-  color: #ececec;
+.long-btn {
+  background-color: #1d0053;
+  font-size: 20px;
+  height: 50px;
+  color: #fff;
+}
+
+.long-btn:hover {
+  background-color: #392263;
 }
 
 .a-link {
@@ -127,10 +138,28 @@ svg {
 }
 
 /* Sidebar */
+.sidebar {
+  height: 100vh;
+  width: 300px;
+  /* Change absolute in small screens for responsive */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .nav-link {
   background-color: #1d0053 !important;
   color: #ffffff !important;
   font-weight: 800;
   border: 1px solid #fff !important;
   border-radius: 0 !important;
+}
+
+/* Payout */
+.form-payout {
+  box-shadow: 1px 1px 10px;
+  padding: 3rem;
+  border-radius: 0.5rem;
+  margin-top: 4rem;
+  color: #ececec;
 }

@@ -42,31 +42,47 @@ const TopNav = () => {
   return (
     // Give each menu item a key and set current state to that navitem and selectedKeys to the current key array
     <Menu className='top-nav' mode='horizontal' selectedKeys={[current]}>
-      <Item key='/' onClick={(e) => setCurrent(e.key)} className='nav-item'>
-        <Link href='/#home'>
-          <a className='typewriter menu-a-tag'>Home.</a>
-        </Link>
-      </Item>
-      <Item
-        key='/#about'
-        onClick={(e) => setCurrent(e.key)}
-        className='nav-item'
-      >
-        <Link href='/#about'>
-          <a className='typewriter menu-a-tag'>exmplain it to me.</a>
-        </Link>
-      </Item>
-      <Item
-        key='/#pricing'
-        onClick={(e) => setCurrent(e.key)}
-        className='nav-item'
-      >
-        <Link href='/#pricing'>
-          <a className='typewriter menu-a-tag'>pricing.</a>
-        </Link>
-      </Item>
+      {user && user.role && user.role.includes("Creator") ? (
+        <Item
+          key='/creator/collection/create'
+          onClick={(e) => setCurrent(e.key)}
+        >
+          <Link href='/creator/collection/create'>
+            <a className='typewriter menu-a-tag'>Create Collection</a>
+          </Link>
+        </Item>
+      ) : (
+        <Item key='/user/become-creator' onClick={(e) => setCurrent(e.key)}>
+          <Link href='/user/become-creator'>
+            <a className='typewriter menu-a-tag'>Become A creator</a>
+          </Link>
+        </Item>
+      )}
       {user === null && (
         <>
+          <Item key='/' onClick={(e) => setCurrent(e.key)} className='nav-item'>
+            <Link href='/#home'>
+              <a className='typewriter menu-a-tag'>Home.</a>
+            </Link>
+          </Item>
+          <Item
+            key='/#about'
+            onClick={(e) => setCurrent(e.key)}
+            className='nav-item'
+          >
+            <Link href='/#about'>
+              <a className='typewriter menu-a-tag'>exmplain it to me.</a>
+            </Link>
+          </Item>
+          <Item
+            key='/#pricing'
+            onClick={(e) => setCurrent(e.key)}
+            className='nav-item'
+          >
+            <Link href='/#pricing'>
+              <a className='typewriter menu-a-tag'>pricing.</a>
+            </Link>
+          </Item>
           <Item
             key='/login'
             onClick={(e) => setCurrent(e.key)}

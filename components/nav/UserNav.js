@@ -3,7 +3,7 @@ import Link from "next/link";
 const UserNav = () => {
   return (
     <div
-      class='d-flex flex-column flex-shrink-0 p-4 vh-100'
+      class='d-flex flex-column flex-shrink-0 p-4 sidebar'
       style={{ background: "#1d0053" }}
     >
       <ul class='nav nav-pills flex-column mb-auto mt-2'>
