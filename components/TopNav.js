@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 
 // Import icons
-import { HomeFilled } from "@ant-design/icons";
+import { HomeFilled, TeamOutlined, CarryOutOutlined } from "@ant-design/icons";
 
 // Import context
 import { Context } from "../context";
@@ -51,14 +51,13 @@ const TopNav = () => {
             <a className='typewriter menu-a-tag'>Create Collection</a>
           </Link>
         </Item>
-      ) : (
+      ) : user ? (
         <Item key='/user/become-creator' onClick={(e) => setCurrent(e.key)}>
           <Link href='/user/become-creator'>
-            <a className='typewriter menu-a-tag'>Become A creator</a>
+            <a className='typewriter menu-a-tag-secondary'>Become A creator</a>
           </Link>
         </Item>
-      )}
-      {user === null && (
+      ) : (
         <>
           <Item key='/' onClick={(e) => setCurrent(e.key)} className='nav-item'>
             <Link href='/#home'>
@@ -103,6 +102,14 @@ const TopNav = () => {
             </Link>
           </Item>
         </>
+      )}
+
+      {user && user.role && user.role.includes("Creator") && (
+        <Item key='/creator' onClick={(e) => setCurrent(e.key)}>
+          <Link href='/creator'>
+            <a className='typewriter menu-a-tag'>creator portal</a>
+          </Link>
+        </Item>
       )}
 
       {user !== null && (

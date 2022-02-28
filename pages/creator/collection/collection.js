@@ -1,10 +1,11 @@
 import axios from "axios";
+import CreatorRoute from "../../../components/Routes/CreatorRoute";
 
 const CollectionCreate = () => {
   return (
-    <>
-      <h1 className='text-center p-5 mb-4 '>Create Collection</h1>
-    </>
+    <CreatorRoute>
+      <h1 className='jumbotron text-center square'>Create Collection</h1>
+    </CreatorRoute>
   );
 };
 

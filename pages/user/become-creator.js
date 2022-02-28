@@ -8,7 +8,6 @@ import {
   LoadingOutlined,
 } from "@ant-design/icons";
 import { toast } from "react-toastify";
-import UserRoute from "../../components/Routes/UserRoute";
 
 const BecomeCreator = () => {
   // State
@@ -18,7 +17,6 @@ const BecomeCreator = () => {
   } = useContext(Context);
 
   const becomeCreator = () => {
-    // console.log("become instructor");
     setLoading(true);
     axios
       .post("/api/make-creator")

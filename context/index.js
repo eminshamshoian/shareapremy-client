@@ -74,7 +74,6 @@ const Provider = ({ children }) => {
     };
     getCsrfToken();
   }, []);
-
   return (
     <Context.Provider value={{ state, dispatch }}>{children}</Context.Provider>
   );

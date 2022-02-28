@@ -31,6 +31,10 @@ svg {
   color: #1d0053;
 }
 
+.secondary-color {
+  color: #ff2d2d !important;
+}
+
 .main-bg {
   background-color: #1d0053;
 }
@@ -98,6 +102,12 @@ svg {
 
 .menu-a-tag {
   color: #1d0053 !important;
+}
+
+.menu-a-tag-secondary {
+  color: #ff2d2d !important;
+  font-weight: 900;
+  border-bottom: #1d0053 solid 5px;
 }
 
 .ant-menu-horizontal > .ant-menu-item::after,
