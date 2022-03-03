@@ -1,4 +1,4 @@
-import { Select, Button } from "antd";
+import { Select, Button, Image, Badge } from "antd";
 
 const { Option } = Select;
 
@@ -8,6 +8,9 @@ const CollectionCreateForm = ({
   handleChange,
   values,
   setValues,
+  preview,
+  uploadButtonText,
+  handleImageRemove,
 }) => {
   const children = [];
   for (let i = 9.99; i <= 1000; i++) {
@@ -82,7 +85,7 @@ const CollectionCreateForm = ({
         <div className='col'>
           <div className='form-group'>
             <label className='btn btn-outline-secondary btn-block text-left'>
-              {values.loading ? "Uploading" : "Upload Thumbnail"}
+              {uploadButtonText}
               <input
                 type='file'
                 name='image'
@@ -93,6 +96,14 @@ const CollectionCreateForm = ({
             </label>
           </div>
         </div>
+        {preview && (
+          <div className='pt-4'>
+            <Badge count='X' onClick={handleImageRemove} className='pointer'>
+              <h5>Preview</h5>
+              <Image width={200} src={preview} />
+            </Badge>
+          </div>
+        )}
       </div>
 
       <div className='row'>

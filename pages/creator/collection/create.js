@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import Resizer from "react-image-file-resizer";
 import InstructorRoute from "../../../components/Routes/CreatorRoute";
 import CollectionCreateForm from "../../../components/forms/CollectionCreateForm";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 const CollectionCreate = () => {
   // state
@@ -13,15 +15,52 @@ const CollectionCreate = () => {
     paid: true,
     category: "",
     loading: false,
-    imagePreview: "",
   });
+  const [image, setImage] = useState({});
+  const [preview, setPreview] = useState("");
+  const [uploadButtonText, setUploadButtonText] = useState("Upload Image");
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
-  const handleImage = () => {
-    //
+  const handleImage = (e) => {
+    let file = e.target.files[0];
+    setPreview(window.URL.createObjectURL(file));
+    setUploadButtonText(file.name);
+    setValues({ ...values, loading: true });
+    // resize
+    Resizer.imageFileResizer(file, 720, 500, "JPEG", 100, 0, async (uri) => {
+      try {
+        let { data } = await axios.post("/api/collection/upload-image", {
+          image: uri,
+        });
+        console.log("IMAGE UPLOADED", data);
+        // set image in the state
+        setImage(data);
+        setValues({ ...values, loading: false });
+      } catch (err) {
+        console.log(err);
+        setValues({ ...values, loading: false });
+        toast("Image upload failed. Try later.");
+      }
+    });
+  };
+
+  const handleImageRemove = async () => {
+    try {
+      // console.log(values);
+      setValues({ ...values, loading: true });
+      const res = await axios.post("/api/collection/remove-image", { image });
+      setImage({});
+      setPreview("");
+      setUploadButtonText("Upload Image");
+      setValues({ ...values, loading: false });
+    } catch (err) {
+      console.log(err);
+      setValues({ ...values, loading: false });
+      toast("Image upload failed. Try later.");
+    }
   };
 
   const handleSubmit = (e) => {
@@ -39,6 +78,9 @@ const CollectionCreate = () => {
           handleChange={handleChange}
           values={values}
           setValues={setValues}
+          preview={preview}
+          uploadButtonText={uploadButtonText}
+          handleImageRemove={handleImageRemove}
         />
       </div>
     </InstructorRoute>
