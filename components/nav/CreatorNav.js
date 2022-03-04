@@ -10,18 +10,18 @@ const CreatorNav = () => {
 
   return (
     <div
-      class='d-flex flex-column flex-shrink-0 p-4 sidebar mt-5'
+      className='d-flex flex-column flex-shrink-0 p-4 sidebar mt-5'
       style={{ background: "#1d0053" }}
     >
-      <ul class='nav nav-pills flex-column mb-auto mt-5'>
-        <li class='nav-item mt-4'>
+      <ul className='nav nav-pills flex-column mb-auto mt-5'>
+        <li className='nav-item mt-4'>
           <Link href='/user'>
             <a className={`nav-link ${current === "/user" && "active"}`}>
               User Dashboard
             </a>
           </Link>
         </li>
-        <li class='nav-item mt-4'>
+        <li className='nav-item mt-4'>
           <Link href='/creator/collection/create'>
             <a
               className={`nav-link ${

@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import Resizer from "react-image-file-resizer";
-import InstructorRoute from "../../../components/Routes/CreatorRoute";
-import CollectionCreateForm from "../../../components/forms/CollectionCreateForm";
-import { toast } from "react-toastify";
 import axios from "axios";
+import CreatorRoute from "../../../components/Routes/CreatorRoute";
+import CollectionCreateForm from "../../../components/forms/CollectionCreateForm";
+import Resizer from "react-image-file-resizer";
+import { toast } from "react-toastify";
+import { useRouter } from "next/router";
 
-const CollectionCreate = () => {
+const collectionCreate = () => {
   // state
   const [values, setValues] = useState({
     name: "",
@@ -19,6 +20,8 @@ const CollectionCreate = () => {
   const [image, setImage] = useState({});
   const [preview, setPreview] = useState("");
   const [uploadButtonText, setUploadButtonText] = useState("Upload Image");
+
+  const router = useRouter();
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -63,13 +66,23 @@ const CollectionCreate = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(values);
+    try {
+      // console.log(values);
+      const { data } = await axios.post("/api/collection", {
+        ...values,
+        image,
+      });
+      toast("Great! Now you can start adding videos");
+      router.push("/creator");
+    } catch (err) {
+      toast(err.response.data);
+    }
   };
 
   return (
-    <InstructorRoute>
+    <CreatorRoute>
       <h1 className='text-center p-5 mb-4 '>Create Collection</h1>
       <div className='container col-md-4 offset-md-4 pb-5 form-collection'>
         <CollectionCreateForm
@@ -83,8 +96,11 @@ const CollectionCreate = () => {
           handleImageRemove={handleImageRemove}
         />
       </div>
-    </InstructorRoute>
+      <pre>{JSON.stringify(values, null, 4)}</pre>
+      <hr />
+      <pre>{JSON.stringify(image, null, 4)}</pre>
+    </CreatorRoute>
   );
 };
 
-export default CollectionCreate;
+export default collectionCreate;
