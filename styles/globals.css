@@ -124,9 +124,9 @@ svg {
 
 .subclass {
   font-size: 20px;
-  border: black solid 1px;
-  border-radius: 0.5rem;
-  color: #1d0053;
+  background-color: #1d0053;
+  box-shadow: 5px 5px #ff2d2d;
+  color: #fff;
 }
 
 .rounded-jumbo {
