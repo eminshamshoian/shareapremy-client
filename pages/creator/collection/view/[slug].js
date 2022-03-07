@@ -103,7 +103,7 @@ const CourseView = () => {
 
   return (
     <CreatorRoute>
-      <div className='contianer-fluid pt-3'>
+      <div className='contianer-fluid pt-3 collection-list'>
         {/* <pre>{JSON.stringify(collection, null, 4)}</pre> */}
         {collection && (
           <div className='container-fluid pt-1'>
@@ -121,27 +121,54 @@ const CourseView = () => {
                 <div className='row'>
                   <div className='col'>
                     <h5 className='mt-2 text-primary'>{collection.name}</h5>
-                    <p style={{ marginTop: "-10px" }}>
+                    <p style={{ marginTop: "-10px", color: "black" }}>
                       {collection.videos && collection.videos.length} videos
                     </p>
-                    <p style={{ marginTop: "-15px", fontSize: "10px" }}>
-                      {collection.category}
+                    <p
+                      style={{
+                        marginTop: "-15px",
+                        fontSize: "20px",
+                        color: "black",
+                      }}
+                    >
+                      Category: {collection.category}
                     </p>
                   </div>
 
                   <div className='d-flex pt-4'>
                     <Tooltip title='Edit'>
-                      <EditOutlined className='h5 pointer text-warning mr-4' />
+                      <EditOutlined
+                        className='h2 pointer'
+                        style={{
+                          color: "#1d0053",
+                        }}
+                      />
                     </Tooltip>
                     <Tooltip title='Publish'>
-                      <CheckOutlined className='h5 pointer text-danger' />
+                      <CheckOutlined
+                        className='h2 pointer text-dark mx-4'
+                        style={{
+                          color: "#1d0053",
+                        }}
+                      />
                     </Tooltip>
                   </div>
                 </div>
               </div>
             </div>
-            <hr />
-            <div className='row'>
+            <hr
+              style={{
+                color: "black",
+              }}
+            />
+            <div
+              className='row'
+              style={{
+                marginTop: "-15px",
+                fontSize: "20px",
+                color: "black",
+              }}
+            >
               <div className='col'>
                 <ReactMarkdown children={collection.description} />
               </div>
@@ -149,7 +176,7 @@ const CourseView = () => {
             <div className='row'>
               <Button
                 onClick={() => setVisible(true)}
-                className='col-md-6 offset-md-3 text-center'
+                className='col-md-6 offset-md-3 text-center long-btn'
                 type='primary'
                 shape='round'
                 icon={<UploadOutlined />}

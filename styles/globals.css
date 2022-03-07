@@ -27,6 +27,10 @@ svg {
   vertical-align: baseline;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 .main-color {
   color: #1d0053;
 }
@@ -186,6 +190,22 @@ svg {
   width: 100vh;
 }
 
+/* List of collections */
+.collection-list {
+  box-shadow: 1px 1px 10px;
+  padding: 4rem;
+  border-radius: 0.5rem;
+  margin-top: 4rem;
+  color: #ececec;
+  margin-left: 15%;
+  width: 100vh;
+}
+
+.collection-actions:hover {
+  background-color: #ff2d2d;
+  border: none !important;
+}
+
 @media (max-width: 414px) {
   .sidebar {
     height: 50vh;
@@ -202,6 +222,17 @@ svg {
     margin-top: 4rem;
     color: #ececec;
     margin-left: 0;
+    width: 100%;
+  }
+
+  /* List of collections */
+  .collection-list {
+    box-shadow: 1px 1px 10px;
+    padding: 4rem;
+    border-radius: 0.5rem;
+    margin-top: 4rem;
+    color: #ececec;
+    margin-left: 0%;
     width: 100%;
   }
 }

@@ -96,9 +96,6 @@ const collectionCreate = () => {
           handleImageRemove={handleImageRemove}
         />
       </div>
-      <pre>{JSON.stringify(values, null, 4)}</pre>
-      <hr />
-      <pre>{JSON.stringify(image, null, 4)}</pre>
     </CreatorRoute>
   );
 };

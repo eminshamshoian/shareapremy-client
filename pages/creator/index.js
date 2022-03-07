@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import CreatorRoute from "../../components/Routes/CreatorRoute";
-import { Avatar } from "antd";
+import { Image, Button } from "antd";
 import Link from "next/link";
-import { CheckCircleOutlined, CloseCircleOutlined } from "@ant-design/icons";
+import {
+  CheckCircleOutlined,
+  CloseCircleOutlined,
+  FileFilled,
+} from "@ant-design/icons";
 
 const CreatorIndex = () => {
   const [videos, setCollections] = useState([]);
@@ -17,7 +21,7 @@ const CreatorIndex = () => {
     setCollections(data);
   };
 
-  const myStyle = { marginTop: "-15px", fontSize: "20px" };
+  const myStyle = { fontSize: "25px", color: "black" };
 
   return (
     <CreatorRoute>
@@ -25,9 +29,9 @@ const CreatorIndex = () => {
       {videos &&
         videos.map((collection) => (
           <>
-            <div className='media pt-2'>
-              <Avatar
-                size={120}
+            <div className='media pt-5 container collection-list'>
+              <Image
+                height={150}
                 src={
                   collection.image
                     ? collection.image.Location
@@ -43,16 +47,28 @@ const CreatorIndex = () => {
                       className='pointer'
                     >
                       <a className='mt-2 text-primary'>
-                        <h5 className='pt-2'>{collection.name}</h5>
+                        <h5 className='pt-2 mt-4' style={{ fontSize: "25px" }}>
+                          <FileFilled style={{ color: "#1d0053" }} />{" "}
+                          {collection.name}
+                        </h5>
                       </a>
                     </Link>
-                    <p style={{ marginTop: "-10px" }}>
-                      {collection.videos.length} videos
+                    <p
+                      style={{
+                        color: "#fff",
+                        border: "solid 1px black",
+                        width: "25%",
+                        paddingLeft: "15px",
+                        backgroundColor: "#1d0053",
+                        borderRadius: "5px",
+                      }}
+                    >
+                      {collection.videos.length} Videos in Collection
                     </p>
-
-                    {collection.videos.length < 5 ? (
+                    <hr className='mt-5' style={{ color: "black" }} />
+                    {collection.videos.length < 1 ? (
                       <p style={myStyle}>
-                        At least 5 videos are required to publish a collection
+                        <CloseCircleOutlined /> Upload a Video To Publish{" "}
                       </p>
                     ) : collection.published ? (
                       <p style={myStyle}>
@@ -60,20 +76,33 @@ const CreatorIndex = () => {
                       </p>
                     ) : (
                       <p style={myStyle}>
-                        Your collection is ready to be published
+                        <CheckCircleOutlined /> Your collection is ready to be
+                        published
                       </p>
                     )}
                   </div>
 
-                  <div className='col-md-3 mt-3 text-center'>
+                  <div className=' text-left pointe pt-5'>
                     {collection.published ? (
                       <div>
-                        <CheckCircleOutlined className='h5 pointer text-success' />
+                        <CheckCircleOutlined className='h5 collection-action-button' />
+                        <h5>Publish Collection</h5>
                       </div>
                     ) : (
-                      <div>
-                        <CloseCircleOutlined className='h5 pointer text-warning' />
-                      </div>
+                      <Button
+                        className='col-md-12 text-center long-btn'
+                        type='primary'
+                        shape='round'
+                        icon={
+                          <CloseCircleOutlined
+                            className='h5 collection-action-button'
+                            style={{ color: "red", fontSize: "18px" }}
+                          />
+                        }
+                        size='large'
+                      >
+                        Add A Video
+                      </Button>
                     )}
                   </div>
                 </div>
