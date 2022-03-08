@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 html,
 body {
@@ -9,7 +9,7 @@ body {
   min-height: 100%;
   height: 100%;
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 a {
@@ -131,10 +131,8 @@ svg {
 }
 
 .subclass {
-  font-size: 20px;
-  background-color: #1d0053;
-  box-shadow: 5px 5px #ff2d2d;
-  color: #fff;
+  font-weight: 900;
+  font-size: 18px;
 }
 
 .rounded-jumbo {
@@ -172,6 +170,7 @@ svg {
   background: #111111;
   color: #ffffff;
   height: 100%;
+  min-height: 100vh;
 }
 
 .nav-link {
