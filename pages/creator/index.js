@@ -29,7 +29,7 @@ const CreatorIndex = () => {
       {videos &&
         videos.map((collection) => (
           <>
-            <div className='media pt-5 container collection-list'>
+            <div className='media pt-5 my-5 container collection-list'>
               <Image
                 height={150}
                 src={

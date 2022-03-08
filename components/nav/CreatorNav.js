@@ -10,7 +10,7 @@ const CreatorNav = () => {
 
   return (
     <div
-      className='d-flex flex-column flex-shrink-0 p-4 sidebar mt-5'
+      className='flex-column p-4 sidebar mt-5'
       style={{ background: "#1d0053" }}
     >
       <ul className='nav nav-pills flex-column mb-auto mt-5'>

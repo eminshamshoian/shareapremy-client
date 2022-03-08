@@ -154,7 +154,7 @@ svg {
 
 /* Sidebar */
 .sidebar {
-  height: 100vh;
+  height: calc(100vh);
   width: 300px;
   /* Change absolute in small screens for responsive */
   position: absolute;
@@ -163,11 +163,11 @@ svg {
 }
 
 .nav-link {
-  background-color: #1d0053 !important;
+  background-color: #3a00a5 !important;
   color: #ffffff !important;
   font-weight: 800;
-  border: 1px solid #fff !important;
-  border-radius: 0 !important;
+  border-radius: 1rem;
+  box-shadow: 5px 5px #10002e;
 }
 
 /* Payout */
