@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import CreatorRoute from "../../components/Routes/CreatorRoute";
-import { Image, Button } from "antd";
-import Link from "next/link";
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import CreatorRoute from '../../components/Routes/CreatorRoute';
+import { Image, Button } from 'antd';
+import Link from 'next/link';
 import {
   CheckCircleOutlined,
   CloseCircleOutlined,
   FileFilled,
-} from "@ant-design/icons";
+} from '@ant-design/icons';
 
 const CreatorIndex = () => {
   const [videos, setCollections] = useState([]);
@@ -17,11 +17,11 @@ const CreatorIndex = () => {
   }, []);
 
   const loadCollections = async () => {
-    const { data } = await axios.get("/api/creator-collections");
+    const { data } = await axios.get('/api/creator-collections');
     setCollections(data);
   };
 
-  const myStyle = { fontSize: "25px", color: "black" };
+  const myStyle = { fontSize: '25px', color: 'black' };
 
   return (
     <CreatorRoute>
@@ -31,11 +31,11 @@ const CreatorIndex = () => {
           <>
             <div className='media pt-5 my-5 container collection-list'>
               <Image
-                height={150}
+                height={100}
                 src={
                   collection.image
                     ? collection.image.Location
-                    : "/collection.png"
+                    : '/collection.png'
                 }
               />
 
@@ -47,28 +47,35 @@ const CreatorIndex = () => {
                       className='pointer'
                     >
                       <a className='mt-2 text-primary'>
-                        <h5 className='pt-2 mt-4' style={{ fontSize: "25px" }}>
-                          <FileFilled style={{ color: "#1d0053" }} />{" "}
+                        <h5
+                          className='pt-2 mt-4'
+                          style={{
+                            fontSize: '22px',
+                            textTransform: 'uppercase',
+                          }}
+                        >
                           {collection.name}
                         </h5>
                       </a>
                     </Link>
                     <p
                       style={{
-                        color: "#fff",
-                        border: "solid 1px black",
-                        width: "25%",
-                        paddingLeft: "15px",
-                        backgroundColor: "#1d0053",
-                        borderRadius: "5px",
+                        color: '#fff',
+                        border: 'solid 1px black',
+                        width: '50%',
+                        paddingLeft: '15px',
+                        paddingTop: '5px',
+                        paddingBottom: '5px',
+                        backgroundColor: '#1d0053',
+                        borderRadius: '5px',
                       }}
                     >
                       {collection.videos.length} Videos in Collection
                     </p>
-                    <hr className='mt-5' style={{ color: "black" }} />
+                    <hr className='mt-5' style={{ color: 'black' }} />
                     {collection.videos.length < 1 ? (
                       <p style={myStyle}>
-                        <CloseCircleOutlined /> Upload a Video To Publish{" "}
+                        <CloseCircleOutlined /> Upload a Video To Publish{' '}
                       </p>
                     ) : collection.published ? (
                       <p style={myStyle}>
@@ -96,7 +103,7 @@ const CreatorIndex = () => {
                         icon={
                           <CloseCircleOutlined
                             className='h5 collection-action-button'
-                            style={{ color: "red", fontSize: "18px" }}
+                            style={{ color: 'red', fontSize: '18px' }}
                           />
                         }
                         size='large'

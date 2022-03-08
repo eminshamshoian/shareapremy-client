@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import CreatorRoute from '../../../components/Routes/CreatorRoute';
-import CollectionCreateForm from '../../../components/forms/CollectionCreateForm';
+import CreatorRoute from '../../../../components/Routes/CreatorRoute';
+import CollectionCreateForm from '../../../../components/forms/CollectionCreateForm';
 import Resizer from 'react-image-file-resizer';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 
-const collectionCreate = () => {
+const CollectionEdit = () => {
   // state
   const [values, setValues] = useState({
     name: '',
@@ -21,7 +21,19 @@ const collectionCreate = () => {
   const [preview, setPreview] = useState('');
   const [uploadButtonText, setUploadButtonText] = useState('Upload Image');
 
+  // router
   const router = useRouter();
+  const { slug } = router.query;
+
+  useEffect(() => {
+    loadCollection();
+  }, [slug]);
+
+  const loadCollection = async () => {
+    const { data } = await axios.get(`/api/collection/${slug}`);
+    setValues(data);
+    if (data && data.image) setImage(data.image);
+  };
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -50,32 +62,14 @@ const collectionCreate = () => {
     });
   };
 
-  const handleImageRemove = async () => {
-    try {
-      // console.log(values);
-      setValues({ ...values, loading: true });
-      const res = await axios.post('/api/collection/remove-image', { image });
-      setImage({});
-      setPreview('');
-      setUploadButtonText('Upload Image');
-      setValues({ ...values, loading: false });
-    } catch (err) {
-      console.log(err);
-      setValues({ ...values, loading: false });
-      toast('Image upload failed. Try later.');
-    }
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // console.log(values);
-      const { data } = await axios.post('/api/collection', {
+      const { data } = await axios.put(`/api/collection/${slug}`, {
         ...values,
         image,
       });
-      toast('Great! Now you can start adding videos');
-      router.push('/creator');
+      toast('Collection updated!');
     } catch (err) {
       toast(err.response.data);
     }
@@ -83,7 +77,8 @@ const collectionCreate = () => {
 
   return (
     <CreatorRoute>
-      <h1 className='text-center p-5 mb-4 '>Create Collection</h1>
+      <h1 className='text-center p-5 mb-4'>Update collection</h1>
+      {/* {JSON.stringify(values)} */}
       <div className='container col-md-4 offset-md-4 pb-5 form-collection'>
         <CollectionCreateForm
           handleSubmit={handleSubmit}
@@ -93,11 +88,14 @@ const collectionCreate = () => {
           setValues={setValues}
           preview={preview}
           uploadButtonText={uploadButtonText}
-          handleImageRemove={handleImageRemove}
+          editPage={true}
         />
       </div>
+      {/* <pre>{JSON.stringify(values, null, 4)}</pre>
+      <hr />
+      <pre>{JSON.stringify(image, null, 4)}</pre> */}
     </CreatorRoute>
   );
 };
 
-export default collectionCreate;
+export default CollectionEdit;

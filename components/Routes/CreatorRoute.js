@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { useRouter } from "next/router";
-import { SyncOutlined } from "@ant-design/icons";
-import CreatorNav from "../nav/CreatorNav";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useRouter } from 'next/router';
+import { SyncOutlined } from '@ant-design/icons';
+import CreatorNav from '../nav/CreatorNav';
 
 const CreatorRoute = ({ children }) => {
   // state
@@ -11,17 +11,17 @@ const CreatorRoute = ({ children }) => {
   const router = useRouter();
 
   useEffect(() => {
-    fetchInstructor();
+    fetchCreator();
   }, []);
 
-  const fetchInstructor = async () => {
+  const fetchCreator = async () => {
     try {
-      const { data } = await axios.get("/api/current-creator");
+      const { data } = await axios.get('/api/current-creator');
       if (data.ok) setOk(true);
     } catch (err) {
       console.log(err);
       setOk(false);
-      router.push("/");
+      router.push('/');
     }
   };
 

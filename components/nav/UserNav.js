@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
-import Link from "next/link";
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 const UserNav = () => {
-  const [current, setCurrent] = useState("");
+  const [current, setCurrent] = useState('');
 
   useEffect(() => {
     process.browser && setCurrent(window.location.pathname);
@@ -11,40 +11,40 @@ const UserNav = () => {
   return (
     <div
       className='d-flex flex-column flex-shrink-0 p-4 sidebar mt-5'
-      style={{ background: "#1d0053" }}
+      style={{ background: '#1d0053' }}
     >
       <ul className='nav nav-pills flex-column mb-auto mt-5'>
         <li className='nav-item'>
           <Link href='/user'>
-            <a className={`nav-link ${current === "/user" && "active"}`}>
+            <a className={`nav-link ${current === '/user' && 'active'}`}>
               Dashboard
             </a>
           </Link>
         </li>
         <li className='nav-item mt-4'>
           <Link href='/user'>
-            <a className={`nav-link ${current === "/user" && "active"}`}>
+            <a className={`nav-link ${current === '/user' && 'active'}`}>
               Dashboard
             </a>
           </Link>
         </li>
         <li className='nav-item mt-4'>
           <Link href='/user'>
-            <a className={`nav-link ${current === "/user" && "active"}`}>
+            <a className={`nav-link ${current === '/user' && 'active'}`}>
               Dashboard
             </a>
           </Link>
         </li>
         <li className='nav-item mt-4'>
           <Link href='/user'>
-            <a className={`nav-link ${current === "/user" && "active"}`}>
+            <a className={`nav-link ${current === '/user' && 'active'}`}>
               Dashboard
             </a>
           </Link>
         </li>
         <li className='nav-item mt-4'>
           <Link href='/user'>
-            <a className={`nav-link ${current === "/user" && "active"}`}>
+            <a className={`nav-link ${current === '/user' && 'active'}`}>
               Dashboard
             </a>
           </Link>

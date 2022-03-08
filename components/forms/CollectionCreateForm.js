@@ -1,4 +1,4 @@
-import { Select, Button, Image, Badge } from "antd";
+import { Select, Button, Image, Badge } from 'antd';
 
 const { Option } = Select;
 
@@ -10,7 +10,8 @@ const CollectionCreateForm = ({
   setValues,
   preview,
   uploadButtonText,
-  handleImageRemove,
+  handleImageRemove = (f) => f,
+  editPage = false,
 }) => {
   const children = [];
   for (let i = 9.99; i <= 1000; i++) {
@@ -18,110 +19,121 @@ const CollectionCreateForm = ({
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className='form-group pb-4'>
-        <input
-          type='text'
-          name='name'
-          className='form-control'
-          placeholder='Collection Name'
-          value={values.name}
-          onChange={handleChange}
-        />
-      </div>
-
-      <div className='form-group pb-4'>
-        <textarea
-          name='description'
-          cols='7'
-          placeholder='Collection Description'
-          rows='7'
-          value={values.description}
-          className='form-control'
-          onChange={handleChange}
-        ></textarea>
-      </div>
-      <div className='form-group pb-4'>
-        <input
-          type='text'
-          name='category'
-          className='form-control'
-          placeholder='Collection Category'
-          value={values.category}
-          onChange={handleChange}
-        />
-      </div>
-      <div className='form-row'>
-        <div className='col'>
+    <>
+      {values && (
+        <form onSubmit={handleSubmit}>
           <div className='form-group pb-4'>
-            <Select
-              style={{ width: "100%" }}
-              size='large'
-              value={values.paid}
-              onChange={(v) => setValues({ ...values, paid: v, price: 0 })}
-            >
-              <Option value={true}>Paid</Option>
-              <Option value={false}>Free</Option>
-            </Select>
+            <input
+              type='text'
+              name='name'
+              className='form-control'
+              placeholder='Collection Name'
+              value={values.name}
+              onChange={handleChange}
+            />
           </div>
-        </div>
 
-        {values.paid && (
           <div className='form-group pb-4'>
-            <Select
-              defaultValue='$9.99'
-              style={{ widht: "100%" }}
-              onChange={(v) => setValues({ ...values, price: v })}
-              tokenSeparators={[,]}
-              size='large'
-            >
-              {children}
-            </Select>
+            <textarea
+              name='description'
+              cols='7'
+              placeholder='Collection Description'
+              rows='7'
+              value={values.description}
+              className='form-control'
+              onChange={handleChange}
+            ></textarea>
           </div>
-        )}
-      </div>
+          <div className='form-group pb-4'>
+            <input
+              type='text'
+              name='category'
+              className='form-control'
+              placeholder='Collection Category'
+              value={values.category}
+              onChange={handleChange}
+            />
+          </div>
+          <div className='form-row'>
+            <div className='col'>
+              <div className='form-group pb-4'>
+                <Select
+                  style={{ width: '100%' }}
+                  size='large'
+                  value={values.paid}
+                  onChange={(v) => setValues({ ...values, paid: v, price: 0 })}
+                >
+                  <Option value={true}>Paid</Option>
+                  <Option value={false}>Free</Option>
+                </Select>
+              </div>
+            </div>
 
-      <div className='form-row pb-4'>
-        <div className='col'>
-          <div className='form-group'>
-            <label className='btn btn-outline-secondary btn-block text-left'>
-              {uploadButtonText}
-              <input
-                type='file'
-                name='image'
-                onChange={handleImage}
-                accept='image/*'
-                hidden
-              />
-            </label>
+            {values.paid && (
+              <div className='form-group pb-4'>
+                <Select
+                  defaultValue='$9.99'
+                  style={{ widht: '100%' }}
+                  onChange={(v) => setValues({ ...values, price: v })}
+                  tokenSeparators={[,]}
+                  size='large'
+                >
+                  {children}
+                </Select>
+              </div>
+            )}
           </div>
-        </div>
-        {preview && (
-          <div className='pt-4'>
-            <Badge count='X' onClick={handleImageRemove} className='pointer'>
-              <h5>Preview</h5>
-              <Image width={200} src={preview} />
-            </Badge>
-          </div>
-        )}
-      </div>
 
-      <div className='row'>
-        <div className='col'>
-          <Button
-            onClick={handleSubmit}
-            disabled={values.loading || values.uploading}
-            className='mb-3 long-btn'
-            loading={values.loading}
-            type='primary'
-            size='large'
-            shape='round'
-          >
-            {values.loading ? "Saving..." : "Save & Continue"}
-          </Button>
-        </div>
-      </div>
-    </form>
+          <div className='form-row pb-4'>
+            <div className='col'>
+              <div className='form-group'>
+                <label className='btn btn-outline-secondary btn-block text-left'>
+                  {uploadButtonText}
+                  <input
+                    type='file'
+                    name='image'
+                    onChange={handleImage}
+                    accept='image/*'
+                    hidden
+                  />
+                </label>
+              </div>
+            </div>
+            {preview && (
+              <div className='py-4'>
+                <Badge
+                  count='X'
+                  onClick={handleImageRemove}
+                  className='pointer'
+                >
+                  <h5>Preview</h5>
+                  <Image width={200} src={preview} />
+                </Badge>
+              </div>
+            )}
+            {editPage && values.image && (
+              <Image width={200} src={values.image.Location} className='py-4' />
+            )}
+          </div>
+
+          <div className='row'>
+            <div className='col'>
+              <Button
+                onClick={handleSubmit}
+                disabled={values.loading || values.uploading}
+                className='mb-3 long-btn'
+                loading={values.loading}
+                type='primary'
+                size='large'
+                shape='round'
+              >
+                {values.loading ? 'Saving...' : 'Save & Continue'}
+              </Button>
+            </div>
+          </div>
+        </form>
+      )}
+    </>
   );
 };
 
