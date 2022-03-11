@@ -219,6 +219,10 @@ svg {
   border: none !important;
 }
 
+.collection-action-button {
+  color: #10002e;
+}
+
 @media (max-width: 414px) {
   .sidebar-content {
     height: 100%;

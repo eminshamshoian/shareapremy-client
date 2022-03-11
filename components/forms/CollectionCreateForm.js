@@ -1,4 +1,4 @@
-import { Select, Button, Image, Badge } from 'antd';
+import { Select, Button, Image, Badge } from "antd";
 
 const { Option } = Select;
 
@@ -58,7 +58,7 @@ const CollectionCreateForm = ({
             <div className='col'>
               <div className='form-group pb-4'>
                 <Select
-                  style={{ width: '100%' }}
+                  style={{ width: "100%" }}
                   size='large'
                   value={values.paid}
                   onChange={(v) => setValues({ ...values, paid: v, price: 0 })}
@@ -73,7 +73,7 @@ const CollectionCreateForm = ({
               <div className='form-group pb-4'>
                 <Select
                   defaultValue='$9.99'
-                  style={{ widht: '100%' }}
+                  style={{ widht: "100%" }}
                   onChange={(v) => setValues({ ...values, price: v })}
                   tokenSeparators={[,]}
                   size='large'
@@ -127,7 +127,7 @@ const CollectionCreateForm = ({
                 size='large'
                 shape='round'
               >
-                {values.loading ? 'Saving...' : 'Save & Continue'}
+                {values.loading ? "Saving..." : "Save & Continue"}
               </Button>
             </div>
           </div>
