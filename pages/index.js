@@ -11,17 +11,7 @@ import {
 } from "@ant-design/icons";
 import CollectionCard from "../components/cards/CollectionCard";
 
-const Index = () => {
-  const [collections, setCollections] = useState([]);
-
-  useEffect(() => {
-    const fetchCollections = async () => {
-      const { data } = await axios.get("/api/collections");
-      setCollections(data);
-    };
-    fetchCollections();
-  }, []);
-
+const Index = ({ collections }) => {
   return (
     <>
       <section id='home'>
@@ -225,5 +215,14 @@ const Index = () => {
     </>
   );
 };
+
+export async function getServerSideProps() {
+  const { data } = await axios.get(`${process.env.API}/collections`);
+  return {
+    props: {
+      collections: data,
+    },
+  };
+}
 
 export default Index;
