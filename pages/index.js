@@ -1,4 +1,6 @@
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import axios from "axios";
 import {
   UserAddOutlined,
   UploadOutlined,
@@ -7,8 +9,19 @@ import {
   BankOutlined,
   RiseOutlined,
 } from "@ant-design/icons";
+import CollectionCard from "../components/cards/CollectionCard";
 
 const Index = () => {
+  const [collections, setCollections] = useState([]);
+
+  useEffect(() => {
+    const fetchCollections = async () => {
+      const { data } = await axios.get("/api/collections");
+      setCollections(data);
+    };
+    fetchCollections();
+  }, []);
+
   return (
     <>
       <section id='home'>
@@ -44,7 +57,7 @@ const Index = () => {
       <section id='about'>
         <div className='container px-1 py-5' id='featured-3'>
           <h1 className='pb-2 text-center'>How It Works</h1>
-          <div className='row g-4 py-5 row-cols-1 row-cols-lg-3'>
+          <div className='row g-4 py-5 row-cols-1 row-cols-lg-4 justify-content-center'>
             <div className='feature col'>
               <div className='feature-icon secondary-bg bg-gradient'>
                 <UserAddOutlined />
@@ -78,39 +91,18 @@ const Index = () => {
                 subscribe to your video list.
               </p>
             </div>
-            <div className='feature col'>
-              <div className='feature-icon secondary-bg bg-gradient'>
-                <MoneyCollectOutlined />
+          </div>
+        </div>
+      </section>
+      <section id='collections'>
+        <div className='container px-1 py-5'>
+          <h1 className='pb-2 text-center'>Recent Collections</h1>
+          <div className='row'>
+            {collections.map((collection) => (
+              <div key={collection._id} className='col-md-4'>
+                <CollectionCard collection={collection} />
               </div>
-              <h3>Earn.</h3>
-              <p>
-                Earn money as you go. When your fans sign up for one of your
-                channels, you get to charge them a fee. Keep 80% of what you
-                earn and pay the rest to keep the platform going.
-              </p>
-            </div>
-            <div className='feature col'>
-              <div className='feature-icon secondary-bg bg-gradient'>
-                <BankOutlined />
-              </div>
-              <h3>Direct Deposit.</h3>
-              <p>
-                Recieve direct deposits by setting up and onboarding with our
-                payment processors. Payments will be disbursed every week to the
-                account of your choosing.
-              </p>
-            </div>
-            <div className='feature col'>
-              <div className='feature-icon secondary-bg bg-gradient'>
-                <RiseOutlined />
-              </div>
-              <h3>Grow.</h3>
-              <p>
-                Most importantly, grow as a creator. Have the ability to scale
-                your art to a profitable business and not just another video on
-                the web.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </section>

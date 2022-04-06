@@ -141,6 +141,12 @@ svg {
 }
 
 /* Features */
+.feature {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.103);
+  padding: 20px;
+  margin-left: 5rem;
+}
+
 .feature-icon {
   display: inline-flex;
   align-items: center;
