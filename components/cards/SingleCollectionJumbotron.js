@@ -30,11 +30,11 @@ const SingleCollectionJumbotron = ({
   } = collection;
 
   return (
-    <div className='jumbotron bg-primary square'>
-      <div className='row'>
+    <div className='p-5 mb-4 rounded-jumbo square'>
+      <div className='row px-5'>
         <div className='col-md-8'>
           {/* title */}
-          <h1 className='text-light font-weight-bold'>{name}</h1>
+          <h1 className='text-light font-weight-bold text-uppercase'>{name}</h1>
           {/* description */}
           <p className='lead'>
             {description && description.substring(0, 160)}...
@@ -92,7 +92,6 @@ const SingleCollectionJumbotron = ({
               className='mb-3 mt-3'
               type='danger'
               block
-              shape='round'
               icon={<SafetyOutlined />}
               size='large'
               disabled={loading}
@@ -101,8 +100,8 @@ const SingleCollectionJumbotron = ({
               {user
                 ? subscribed.status
                   ? "Go to collection"
-                  : "Enroll"
-                : "Login to enroll"}
+                  : "Subscribe"
+                : "Login to Subscribe"}
             </Button>
           )}
         </div>

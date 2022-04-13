@@ -64,13 +64,14 @@ const TopNav = () => {
               <a className='typewriter menu-a-tag'>Home.</a>
             </Link>
           </Item>
+
           <Item
             key='/#about'
             onClick={(e) => setCurrent(e.key)}
             className='nav-item'
           >
             <Link href='/#about'>
-              <a className='typewriter menu-a-tag'>exmplain it to me.</a>
+              <a className='typewriter menu-a-tag'>explain it to me.</a>
             </Link>
           </Item>
           <Item
@@ -80,6 +81,15 @@ const TopNav = () => {
           >
             <Link href='/#pricing'>
               <a className='typewriter menu-a-tag'>pricing.</a>
+            </Link>
+          </Item>
+          <Item
+            key='/#recent'
+            onClick={(e) => setCurrent(e.key)}
+            className='nav-item'
+          >
+            <Link href='/#recent'>
+              <a className='typewriter menu-a-tag'>recent collections.</a>
             </Link>
           </Item>
           <Item

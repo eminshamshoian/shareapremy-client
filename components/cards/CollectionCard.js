@@ -11,6 +11,11 @@ const CollectionCard = ({ collection }) => {
       <a>
         <Card
           className='mb-4'
+          style={{
+            border: "none",
+            boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.103)",
+            color: "#646464",
+          }}
           cover={
             <img
               src={image.Location}
@@ -22,12 +27,15 @@ const CollectionCard = ({ collection }) => {
             />
           }
         >
-          <h4>{name}</h4>
-          <p>by {creator.name}</p>
+          <h4 className='text-uppercase'>{name}</h4>
+          <p className='text-uppercase'>by {creator.name}</p>
           <Badge
             count={category}
-            style={{ backgroundColor: "#03a9f4" }}
-            className='pb-2 mr-2'
+            style={{
+              backgroundColor: "#1d0053",
+              borderRadius: "0",
+            }}
+            className='mr-2 text-uppercase'
           />
           <h4 className='pt-2'>
             {paid

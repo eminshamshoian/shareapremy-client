@@ -229,6 +229,24 @@ svg {
   color: #10002e !important;
 }
 
+@media (max-width: 912px) {
+  .hiw-card {
+    margin-right: 4rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .hiw-card {
+    margin-right: 6rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hiw-card {
+    margin-right: 3rem;
+  }
+}
+
 @media (max-width: 414px) {
   .sidebar-content {
     height: 100%;

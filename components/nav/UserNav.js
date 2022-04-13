@@ -17,35 +17,7 @@ const UserNav = () => {
         <li className='nav-item'>
           <Link href='/user'>
             <a className={`nav-link ${current === "/user" && "active"}`}>
-              Dashboard
-            </a>
-          </Link>
-        </li>
-        <li className='nav-item mt-4'>
-          <Link href='/user'>
-            <a className={`nav-link ${current === "/user" && "active"}`}>
-              Dashboard
-            </a>
-          </Link>
-        </li>
-        <li className='nav-item mt-4'>
-          <Link href='/user'>
-            <a className={`nav-link ${current === "/user" && "active"}`}>
-              Dashboard
-            </a>
-          </Link>
-        </li>
-        <li className='nav-item mt-4'>
-          <Link href='/user'>
-            <a className={`nav-link ${current === "/user" && "active"}`}>
-              Dashboard
-            </a>
-          </Link>
-        </li>
-        <li className='nav-item mt-4'>
-          <Link href='/user'>
-            <a className={`nav-link ${current === "/user" && "active"}`}>
-              Dashboard
+              My Subscriptions
             </a>
           </Link>
         </li>

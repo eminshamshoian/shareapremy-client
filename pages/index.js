@@ -45,11 +45,11 @@ const Index = ({ collections }) => {
         </div>
       </section>
       <section id='about'>
-        <div className='container px-1 py-5' id='featured-3'>
+        <div className='container-fluid py-5' id='featured-3'>
           <h1 className='pb-2 text-center'>How It Works</h1>
-          <div className='row g-4 py-5 row-cols-1 row-cols-lg-4 justify-content-center'>
-            <div className='feature col'>
-              <div className='feature-icon secondary-bg bg-gradient'>
+          <div className='row g-4 py-5 row-cols-1 row-cols-lg-4 row-cols-md-12 justify-content-center hiw-card'>
+            <div className='feature col px-5 py-5'>
+              <div className='feature-icon secondary-bg bg-gradient mb-5'>
                 <UserAddOutlined />
               </div>
               <h3>Sign Up.</h3>
@@ -59,8 +59,8 @@ const Index = ({ collections }) => {
                 an account. It's totally free!
               </p>
             </div>
-            <div className='feature col'>
-              <div className='feature-icon secondary-bg bg-gradient'>
+            <div className='feature col px-5 py-5'>
+              <div className='feature-icon secondary-bg bg-gradient mb-5'>
                 <UploadOutlined />
               </div>
               <h3>Upload.</h3>
@@ -70,8 +70,8 @@ const Index = ({ collections }) => {
                 pay for your craft.
               </p>
             </div>
-            <div className='feature col'>
-              <div className='feature-icon secondary-bg bg-gradient'>
+            <div className='feature col px-5 py-5'>
+              <div className='feature-icon secondary-bg bg-gradient mb-5'>
                 <ShareAltOutlined />
               </div>
               <h3>Share.</h3>
@@ -84,20 +84,8 @@ const Index = ({ collections }) => {
           </div>
         </div>
       </section>
-      <section id='collections'>
-        <div className='container px-1 py-5'>
-          <h1 className='pb-2 text-center'>Recent Collections</h1>
-          <div className='row'>
-            {collections.map((collection) => (
-              <div key={collection._id} className='col-md-4'>
-                <CollectionCard collection={collection} />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
       <section id='pricing'>
-        <div className='container py-5'>
+        <div className='container-fluid py-5' style={{ maxWidth: "120rem" }}>
           <h1 className='pb-5 text-center'>Pricing</h1>
           <div className='p-5 mb-4  rounded-3 secondary-bg text-light'>
             <h1 className='display-5 fw-bold text-light'>Free. Forever.</h1>
@@ -113,6 +101,19 @@ const Index = ({ collections }) => {
           </div>
         </div>
       </section>
+      <section id='recent'>
+        <div className='container px-1 py-5'>
+          <h1 className='pb-2 text-center'>Recent Collections</h1>
+          <div className='row'>
+            {collections.map((collection) => (
+              <div key={collection._id} className='col-md-4'>
+                <CollectionCard collection={collection} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section id='footer' className='mt-5'>
         <footer className='text-center text-lg-start bg-light text-muted'>
           <section className='d-flex justify-content-center justify-content-lg-between p-4'>
