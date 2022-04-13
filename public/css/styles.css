@@ -273,19 +273,11 @@ svg {
 }
 
 .form-register {
-<<<<<<< HEAD
-  box-shadow: 1px 1px 10px;
-  padding: 3rem;
-  border-radius: 0.5rem;
-  margin-top: 4rem;
-  color: #ececec;
-=======
   box-shadow: 1px 1px 10px !important;
   padding: 3rem !important;
   border-radius: 0.5rem !important;
   margin-top: 4rem !important;
   color: #ececec !important;
->>>>>>> fdf7ac56040e9377dcd7d5812f5b4bb90a6e5ab3
 }
 
 .form-register-input {
