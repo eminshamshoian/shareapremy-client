@@ -94,7 +94,7 @@ svg {
 }
 
 .top-nav {
-  padding: 1rem;
+  padding: 1rem !important;
   position: fixed;
   width: 100%;
   left: 0;
